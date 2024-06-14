@@ -22,13 +22,19 @@ import (
 
 	// Import all Kubernetes client auth plugins (e.g. Azure, GCP, OIDC, etc.)
 	// to ensure that exec-entrypoint and run can make use of them.
+	// auth,包含各种认证插件，如GCP、Azure等，允许连接到Kubernetes集群时使用不同身份验证方式
 	_ "k8s.io/client-go/plugin/pkg/client/auth"
-
+	// 处理Kubernetes API对象的序列化和反序列化
 	"k8s.io/apimachinery/pkg/runtime"
+	// 提供错误处理和其他实用工具
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
+	// 定义了Kubernetes客户端的scheme，用于序列化和反序列化API对象
 	clientgoscheme "k8s.io/client-go/kubernetes/scheme"
+	// 提供Controller Runtime库，这是构建Kubernetes控制器的基础
 	ctrl "sigs.k8s.io/controller-runtime"
+	// 健康检查接口，用于报告控制器的运行状况
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
+	// 提供日志记录，这里使用的是Zap库
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
 	batchv1 "tutorial.kubebuilder.io/api/v1"
